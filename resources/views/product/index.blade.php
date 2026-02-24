@@ -1,14 +1,7 @@
-{{-- resources/views/products/index.blade.php --}}
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Catálogo | Productos</title>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-@php
+@extends('layout.app')
+
+@section('content')
+    @php
   // INDEX: 5 productos - SOLO info básica (catálogo)
   $products = $products ?? [
     ['id_producto'=>'P-1001','nombre'=>'Audífonos Nova','precio'=>189900,'imagen'=>'https://picsum.photos/seed/nova/900/600','estado'=>'Disponible'],
@@ -17,9 +10,9 @@
     ['id_producto'=>'P-1004','nombre'=>'Monitor UltraView 27”','precio'=>899900,'imagen'=>'https://picsum.photos/seed/ultraview/900/600','estado'=>'Disponible'],
     ['id_producto'=>'P-1005','nombre'=>'Webcam StreamPro','precio'=>159900,'imagen'=>'https://picsum.photos/seed/streampro/900/600','estado'=>'Inactivo'],
   ];
-@endphp
+    @endphp
 
-@include('layout.navbar')
+
 
 <main>
   <div class="container">
@@ -62,7 +55,7 @@
   </div>
 </main>
 
-@include('layout.footer')
+
 
 <script>
   // Tema
@@ -78,5 +71,8 @@
     setTimeout(()=>t.classList.remove('on'),2200); setTimeout(()=>t.remove(),2600);
   }
 </script>
-</body>
-</html>
+
+
+@endsection
+
+

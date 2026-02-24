@@ -1,13 +1,5 @@
-{{-- resources/views/products/show.blade.php --}}
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Especificaciones | Producto</title>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
+@extends('layout.app')
+@section('content')
 @php
   // SHOW: 1 SOLO producto (ideal: viene desde controlador)
   $product = $product ?? [
@@ -23,7 +15,7 @@
   $badge = $e==='disponible' ? 'badge--ok' : ($e==='agotado' ? 'badge--warn' : 'badge--bad');
 @endphp
 
-@include('layout.navbar')
+
 
 <main>
   <div class="container">
@@ -84,7 +76,7 @@
   </div>
 </main>
 
-@include('layout.footer')
+
 
 <script>
   // Tema
@@ -105,5 +97,4 @@
     setTimeout(()=>t.classList.remove('on'),2200); setTimeout(()=>t.remove(),2600);
   }
 </script>
-</body>
-</html>
+@endsection

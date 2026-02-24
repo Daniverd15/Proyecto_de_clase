@@ -1,15 +1,6 @@
-{{-- resources/views/products/create.blade.php --}}
-<!doctype html>
-<html lang="es">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Crear producto</title>
-  <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-</head>
-<body>
-@include('layout.navbar')
-<main>
+@extends('layout.app')
+@section('content')
+  <main>
   <div class="container">
     <section class="hero">
       <h1>Crear producto</h1>
@@ -78,7 +69,7 @@
   </div>
 </main>
 
-@include('layout.footer')
+
 
 <script>
   // Tema
@@ -125,5 +116,6 @@
     imgPreview.src=URL.createObjectURL(f);
   });
 </script>
-</body>
-</html>
+
+
+@endsection
