@@ -9,7 +9,7 @@
 
     <div style="display:grid;grid-template-columns:1.2fr .8fr;gap:14px">
       <section class="card pad">
-        <form class="form" method="POST" action="{{ url('/products') }}" enctype="multipart/form-data">
+        <form class="form" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
           @csrf
 
           <div class="field">
@@ -31,10 +31,10 @@
           <div class="field">
             <label for="estado">Estado</label>
             @php $estadoOld = old('estado','Disponible'); @endphp
-            <select id="estado" name="estado" required>
-              <option value="Disponible" {{ $estadoOld==='Disponible'?'selected':'' }}>Disponible</option>
-              <option value="Agotado" {{ $estadoOld==='Agotado'?'selected':'' }}>Agotado</option>
-              <option value="Inactivo" {{ $estadoOld==='Inactivo'?'selected':'' }}>Inactivo</option>
+            <select id="estado" name="category" required>
+              @foreach ($category as $category)
+                  <option value="{{$category->id}}">{{$category->name}}</option>
+              @endforeach
             </select>
           </div>
 
