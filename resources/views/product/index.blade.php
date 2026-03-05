@@ -1,16 +1,8 @@
 @extends('layout.app')
 
 @section('content')
-    @php
-  // INDEX: 5 productos - SOLO info básica (catálogo)
-  $products = $products ?? [
-    ['id_producto'=>'P-1001','nombre'=>'Audífonos Nova','precio'=>189900,'imagen'=>'https://picsum.photos/seed/nova/900/600','estado'=>'Disponible'],
-    ['id_producto'=>'P-1002','nombre'=>'Teclado Pulse','precio'=>299900,'imagen'=>'https://picsum.photos/seed/pulse/900/600','estado'=>'Disponible'],
-    ['id_producto'=>'P-1003','nombre'=>'Mouse Flow','precio'=>119900,'imagen'=>'https://picsum.photos/seed/flow/900/600','estado'=>'Agotado'],
-    ['id_producto'=>'P-1004','nombre'=>'Monitor UltraView 27”','precio'=>899900,'imagen'=>'https://picsum.photos/seed/ultraview/900/600','estado'=>'Disponible'],
-    ['id_producto'=>'P-1005','nombre'=>'Webcam StreamPro','precio'=>159900,'imagen'=>'https://picsum.photos/seed/streampro/900/600','estado'=>'Inactivo'],
-  ];
-    @endphp
+   
+
 
 
 
@@ -22,31 +14,29 @@
     </section>
 
     <section class="catalogGrid">
-      @foreach($products as $p)
-        @php
-          $e = strtolower($p['estado']);
-          $badge = $e==='disponible' ? 'badge--ok' : ($e==='agotado' ? 'badge--warn' : 'badge--bad');
-        @endphp
+      @foreach($misproductos as $p)
+        
+       
 
         <article class="card catalogCard">
           <img src="{{ $p['imagen'] }}" alt="Imagen {{ $p['nombre'] }}" loading="lazy">
           <div class="catalogBody">
-            <h3 class="catalogTitle">{{ $p['nombre'] }}</h3>
+            <h3 class="catalogTitle">{{ $p->name }}</h3>
 
             <div class="catalogMeta">
-              <span class="badge {{ $badge }}">● {{ $p['estado'] }}</span>
-              <span class="badge">ID: {{ $p['id_producto'] }}</span>
+              <span class="badge">● {{ $p['estado'] }}</span>
+              <span class="badge">ID: {{ $p->category_id }}</span>
             </div>
 
             <div style="display:flex;justify-content:space-between;align-items:baseline;gap:10px">
-              <div class="price">$ {{ number_format($p['precio'],0,',','.') }}</div>
+              <div class="price">$ {{ number_format($p->price,0,',','.') }}</div>
               <span class="muted" style="font-size:13px">★ ★ ★ ★ ☆</span>
             </div>
 
             <div class="catalogActions">
               {{-- Va al SHOW (especificación de 1 producto) --}}
               <a class="btn btn--primary" href="{{ url('/products/'.$p['id_producto']) }}">Ver</a>
-              <button class="btn btn--ghost" type="button" onclick="toast('Favorito: {{ addslashes($p['nombre']) }}')">♡</button>
+              <button class="btn btn--ghost" type="button" onclick="toast('Favorito: {{ addslashes($p->name) }}')">♡</button>
             </div>
           </div>
         </article>
