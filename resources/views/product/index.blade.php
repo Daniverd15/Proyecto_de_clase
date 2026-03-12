@@ -33,6 +33,7 @@
           <div class="catalogActions">
             <a class="btn btn--primary" href="{{ url('/products/'.$p->id_producto) }}">Ver</a>
             <button class="btn btn--ghost" type="button" onclick="toast('Favorito: {{ addslashes($p->name) }}')">♡</button>
+            
           </div>
         </article>
       @endforeach
