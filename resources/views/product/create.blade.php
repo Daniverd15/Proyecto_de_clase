@@ -13,19 +13,7 @@
                 <form class="form" method="POST" action="{{ route('product.store') }}" enctype="multipart/form-data">
                     @csrf
 
-                    <div class="field">
-                        <label for="id_producto">ID Producto</label>
-                        <input
-                            id="id_producto"
-                            name="id_producto"
-                            type="text"
-                            placeholder="P-1006"
-                            value="{{ old('id_producto') }}"
-                        >
-                        @error('id_producto')
-                            <span style="color:red;font-size:14px">{{ $message }}</span>
-                        @enderror
-                    </div>
+                    
 
                     <div class="field">
                         <label for="nombre">Nombre</label>

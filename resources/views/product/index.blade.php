@@ -15,7 +15,7 @@
           @if($p->image)
             <img class="catalogImage" src="{{ asset('storage/'.$p->image) }}" alt="Imagen">
           @else
-            <img class="catalogImage" src="https://www.freepik.es/icono/defecto_4694371" alt="Imagen por defecto">
+            <img class="catalogImage" src="https://www.shutterstock.com/image-vector/defect-icon-element-design-600nw-2615276675.jpg" alt="Imagen por defecto">
           @endif
 
           <h3 class="catalogTitle">{{ $p->name }}</h3>
@@ -33,6 +33,11 @@
           <div class="catalogActions">
             <a class="btn btn--primary" href="{{ url('/products/'.$p->id_producto) }}">Ver</a>
             <button class="btn btn--ghost" type="button" onclick="toast('Favorito: {{ addslashes($p->name) }}')">♡</button>
+            <form action="{{route('product.destroy',$p)}}" method="POST">
+              @method('delete')
+              @csrf
+              <button class="btn btn--ghost" >Eliminar</button>
+            </form>
             
           </div>
         </article>
