@@ -15,7 +15,7 @@
           @if($p->image)
             <img class="catalogImage" src="{{ asset('storage/'.$p->image) }}" alt="Imagen">
           @else
-            <img class="catalogImage" src="" alt="Imagen por defecto">
+            <img class="catalogImage" src="https://www.freepik.es/icono/defecto_4694371" alt="Imagen por defecto">
           @endif
 
           <h3 class="catalogTitle">{{ $p->name }}</h3>
